@@ -35,33 +35,65 @@ docker container ls
 docker container ls -a
 docker image ls
 ```
+Lab 1.2 Terminal Access
+---------------------------------------------
+1. Create a container using the Ubuntu 16.04 image and connect to STDIN and a terminal:
 
-4. Run the nginx image (a web server that services http requests external to the host):
+```
+docker run -it ubuntu:16.04 bash
+```
+This will run the container, attach to standard input stream, and get a pseudo-terminal. For the container process, we specify bash to get the terminal.
+
+2. Create a file using the touch command:
+
+```
+touch test
+ls
+```
+You should see the file created in the root directory of the container. Now exit:
+```
+exit
+```
+
+3. Run the container once again:
+```
+docker run -it ubuntu:16.04 bash
+
+ls
+```
+Where did our file go?
+
+Lab 1.3: Docker Container Detached Mode and Exec
+------------------------------------------------
+In this lab, we will learn how to interact with an already running Docker container.
+
+1. Run the NGINX image (a web server that services http requests external to the host) and connect to STDIN and a terminal:
+
 ```
 docker container ls
-docker image ls
-docker container run -d -p 8080:80 --name nginx nginx
+docker container run -it --name nginx nginx
+```	
+ctrl+c to exit.
+
+2. Run the NGINX image in detached mode:
+```
 docker container ls
-docker image ls
-docker container stop nginx
-docker container rm nginx
+docker container run -d --name nginx nginx
+docker container ls
 ```
-What are the extra command line options? Why are they needed?
+Notice the port mapping - port 80 has been mapped to a random port on the host. 
+Go to <server ip>:<random port> and see the NGINX welcome page.
 
-Lab 1.2: Docker Container Exec
-------------------------------
-
-In this lab, we will learn how to interact with an already running Docker container
+3. Gain terminal access to detached container:
 
 ```
-docker container run -d -p 8080:80 --name nginx nginx
 docker container exec -it nginx bash
 exit
 docker container ls
 docker rm $(docker kill nginx)
 ```
 
-Lab 1.3: Pull Files from NGINX
+Lab 1.4: Pull Files from NGINX
 -----------------------------------------
 
 In this lab, we will run NGINX and try to view the content in another container
@@ -74,7 +106,7 @@ Attach it to the test network
 
 Figure out how to get the index.html from nginx
 
-Lab 1.4: Re-Run Nginx With Content
+Lab 1.5: Re-Run Nginx With Content
 ----------------------------------
 
 In this lab, we will run Nginx with the content of our local directory
@@ -84,7 +116,7 @@ In this lab, we will run Nginx with the content of our local directory
 What is missing from the above command? Volume mounts
 Syntax: -v  /host/path:/container/path
 
-Lab 1.5: Processes On The Host
+Lab 1.6: Processes On The Host
 ------------------------------
 
 In this lab, we will look at the processes running on the host
