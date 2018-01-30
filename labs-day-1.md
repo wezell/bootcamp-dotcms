@@ -13,7 +13,7 @@ docker container ls
 docker image ls
 docker search hello-world
 ```
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;What's an Official image?
+What's an "Official" image?
 
 2. Pull the busybox image from Docker Hub:
 
@@ -39,9 +39,8 @@ Lab 1.2 Terminal Access
 ---------------------------------------------
 1. Create a container using the Ubuntu 16.04 image and connect to STDIN and a terminal:
 
-```
-docker run -it ubuntu:16.04 bash
-```
+`docker run -it ubuntu:16.04 bash`
+
 This will run the container, attach to standard input stream, and get a pseudo-terminal. For the container process, we specify bash to get the terminal.
 
 2. Create a file using the touch command:
@@ -106,16 +105,6 @@ Attach it to the test network
 
 Figure out how to get the index.html from nginx
 
-Lab 1.5: Re-Run Nginx With Content
-----------------------------------
-
-In this lab, we will run Nginx with the content of our local directory
-
-`docker container run -d -p "8080:80" --name nginx --network test nginx`
-
-What is missing from the above command? Volume mounts
-Syntax: -v  /host/path:/container/path
-
 Lab 1.6: Processes On The Host
 ------------------------------
 
@@ -127,24 +116,12 @@ docker run -d -p "8080:80" --name nginx --network test nginx
 ps aux
 ```
 
-Lab 2.1: Docker Volumes
+Lab 2.1: Intro to Docker Volumes
 -----------------------
 
-In this lab, we will learn more about Docker volumes
+In this lab, we will learn more about Docker volumes.
 
-Named Volumes:
-
-```
-docker volume ls
-docker volume create myvolume
-docker volume inspect myvolume
-docker container run --rm -it -v myvolume:/myloc/tmp --name alpine alpine
-touch /myloc/tmp/test.txt
-exit
-ls /graph/volumes/myvolume/_data
-```
-
-Host Volumes:
+1. Host Volumes:
 
 ```
 docker container run --rm -it -v /tmp:/myloc/tmp --name alpine alpine
@@ -153,38 +130,75 @@ exit
 ls /tmp
 ```
 
-Lab 2.2: Docker Networking
---------------------------
+2. Named Volumes:
+```
+docker volume ls
+docker volume create myvolume
+docker volume inspect myvolume
+docker container run --rm -it -v myvolume:/myloc/tmp --name alpine alpine
+touch /myloc/tmp/test.txt
+exit
+ls /var/lib/docker/volumes/myvolume/_data
+```
 
-In this lab, we will get more practice with Docker networking
+Lab 2.2: Re-Run Nginx With Content
+----------------------------------
 
+In this lab, we will run Nginx with the content of our local host directory.
+
+1. Create a new directory "content" with file "index.html" on your host. Add some test to the file ("hello" maybe?).
+
+2. Run NGINX container using a host volume mount
+`docker container run -P -d -v $(pwd)/content:/usr/share/nginx/html nginx`
+
+Did it work? What happenend to the content that was already at the path /usr/share/nginx/html?
+
+Lab 2.3: Intro to Docker Networking
+-----------------------------------
+
+In this lab, we will get more practice with Docker networking.
+
+1. Create a user-defined network:
 ```
 docker network ls
+docker network create -d bridge test
 docker network inspect test
+docker network ls
 ```
 
-Put 2 containers on the same bridge network so they can communicate via DNS
-Remember the `--network` CLI option
+2. Put 2 containers on the same bridge network so they can communicate via DNS
 
-Lab 2.3: Exposing and Publishing Ports
+```
+docker container run --network test -d --name web1 nginx
+docker container run --network test -it --name web2 ubuntu bash
+
+$ apt-get update
+$ apt-get install -y iputils-ping
+$ ping web1
+```
+
+Lab 2.4: Exposing and Publishing Ports
 --------------------------------------
 
-In this lab, we will learn about exposing and publishing ports
-After you run each container, look at how the ports are exposed
+In this lab, we will learn about exposing and publishing ports.
+After you run each container, look at how the ports are exposed.
 
-Exposing Ports:  
-Run NGINX without any port mapping  
+1. Exposing Ports: 
+Run NGINX without any port mapping:  
 `docker container run -d --name nginx-exposed nginx`  
 
-Publishing Ports:  
-Run Nginx and let Docker choose a high port  
+2. Publishing Ports  
+Run Nginx and let Docker choose a high port:  
 `docker container run -d -p 80 --name nginx-high nginx`  
 
-Run Nginx and choose the high port  
+3. Run Nginx and choose the high port: 
 `docker container run -d -p 8080:80 --name nginx-user nginx`  
 
-For communication within the network, use the exposed port  
-For communication external to the network, use the published port  
+4. Run Nginx and let Docker determine exposed ports and mapping: 
+`docker container run -d -P --name nginx-auto nginx`
+
+For communication within the network, use the exposed port.
+For communication external to the network, use the published port.  
 
 Lab 3.1: Build a Simple Python App
 ----------------------------------
