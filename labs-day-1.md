@@ -4,7 +4,28 @@ Boxboat Bootcamp Labs
 Lab 1.1: Running Your First Docker Container
 --------------------------------------------
 
-In this lab, we will examine the Docker CLI and execute our first container
+In this lab, we will examine the Docker CLI and execute our first container.
+
+1. Search Docker Hub using the CLI:
+
+```
+docker container ls
+docker image ls
+docker search hello-world
+```
+What's an Official image?
+
+2. Pull the busybox image from Docker Hub:
+
+```
+docker image ls
+docker image pull hello-world
+docker image ls
+docker container ls
+```
+We have an image! Why do we not have any containers?
+
+3. Run the hello-world Docker image:
 
 ```
 docker container ls
@@ -13,12 +34,19 @@ docker container run hello-world
 docker container ls
 docker container ls -a
 docker image ls
+```
+
+4. Run the nginx image (a web server that services http requests external to the host):
+```
+docker container ls
+docker image ls
 docker container run -d -p 8080:80 --name nginx nginx
 docker container ls
 docker image ls
 docker container stop nginx
 docker container rm nginx
 ```
+What are the extra command line options? Why are they needed?
 
 Lab 1.2: Docker Container Exec
 ------------------------------
