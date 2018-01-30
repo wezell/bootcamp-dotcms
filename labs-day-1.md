@@ -81,7 +81,7 @@ docker container run -d --name nginx nginx
 docker container ls
 ```
 Notice the port mapping - port 80 has been mapped to a random port on the host. 
-Go to <server ip>:<random port> and see the NGINX welcome page.
+Go to server ip:random port and see the NGINX welcome page.
 
 3. Gain terminal access to detached container:
 
@@ -105,7 +105,7 @@ Attach it to the test network
 
 Figure out how to get the index.html from nginx
 
-Lab 1.6: Processes On The Host
+Lab 1.5: Processes On The Host
 ------------------------------
 
 In this lab, we will look at the processes running on the host
