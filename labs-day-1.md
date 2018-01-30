@@ -92,20 +92,7 @@ docker container ls
 docker rm $(docker kill nginx)
 ```
 
-Lab 1.4: Pull Files from NGINX
------------------------------------------
-
-In this lab, we will run NGINX and try to view the content in another container
-
-`docker container run -d -p "8080:80" --name nginx --network test nginx`
-
-Now, let’s run an Alpine container
-Make sure we run it with a shell
-Attach it to the test network
-
-Figure out how to get the index.html from nginx
-
-Lab 1.5: Processes On The Host
+Lab 1.4: Processes On The Host
 ------------------------------
 
 In this lab, we will look at the processes running on the host
@@ -203,6 +190,13 @@ Run Nginx and let Docker choose a high port:
 
 For communication within the network, use the exposed port.
 For communication external to the network, use the published port.  
+
+Lab 2.5: Pull Files from NGINX
+-----------------------------------------
+
+Let's take what we've learned in Section 2 apply it in this lab. 
+
+Run an NGINX container and try to view the served content from another container (using curl or similar).
 
 Lab 3.1: Build a Simple Python App
 ----------------------------------
