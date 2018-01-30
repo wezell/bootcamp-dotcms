@@ -220,7 +220,7 @@ ls /var/lib/docker/image/overlay2/imagedb/content/sha256/`
 ls /var/lib/docker/image/overlay2/layerdb/sha256/
 ````
 
-Lab 3.1: Multi-Stage Builds
+Lab 3.2: Multi-Stage Builds
 ---------------------------
 
 In this lab, we will show how Multi-Stage Builds can reduce application size  
