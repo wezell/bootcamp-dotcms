@@ -112,9 +112,13 @@ In this lab, we will look at the processes running on the host
 
 ```
 ps aux
-docker run -d -p "8080:80" --name nginx --network test nginx
+docker run -d --name nginx nginx
+ps aux
+
+docker run -it ubuntu bash
 ps aux
 ```
+Are the process ids different? What about users and groups?
 
 Lab 2.1: Intro to Docker Volumes
 -----------------------
