@@ -1,4 +1,4 @@
-Boxboat Boot Camp Labs
+BoxBoat Boot Camp Labs
 =====================
 
 Lab 1.1: Running Your First Docker Container
@@ -13,7 +13,7 @@ docker container ls
 docker image ls
 docker search hello-world
 ```
-What's an Official image?
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;What's an Official image?
 
 2. Pull the busybox image from Docker Hub:
 
