@@ -92,3 +92,24 @@ A WordPress container with the following parameters:
 		WORDPRESS_DB_HOST: db:3306
       	        WORDPRESS_DB_PASSWORD: wordpress
 ```
+
+5.3: Intro to Docker Swarm Mode
+-------------------------------
+
+This lab introduces Docker Swarm Mode.
+
+Three individual Docker-provisioned machines are required for this exercise.
+
+1. Begin by initializing the Swarm on the first node. This will become your Swarm Master:
+```
+docker swarm init --advertise-addr eth0
+```
+
+2. Copy the Swarm Worker join command and run on the second and third nodes:
+```
+docker swarm join --token SWMTKN-1-56jy8q50pccqdl0bgxzrca2p14drhcqz6r1ll1zld4klqk6ocs-5rrirnikqrjsfuqrssy8kbr0s 192.168.0.158:2377
+```
+NOTE: your swarm token and ip address will differ from the above!
+Ensure the output shows the workers properly joining the swarm.
+
+3. 
