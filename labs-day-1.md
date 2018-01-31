@@ -174,7 +174,7 @@ Lab 2.4: Exposing and Publishing Ports
 In this lab, we will learn about exposing and publishing ports.
 After you run each container, look at how the ports are exposed.
 
-1. Exposing Ports 
+1. Exposing Ports  
 Run NGINX without any port mapping:  
 `docker container run -d --name nginx-exposed nginx`  
 
@@ -191,12 +191,12 @@ Run Nginx and let Docker choose a high port:
 For communication within the network, use the exposed port.
 For communication external to the network, use the published port.  
 
-Lab 2.5: Pull Files from NGINX
+Lab 2.5: Inter-container Communication
 -----------------------------------------
 
 Let's take what we've learned in Section 2 apply it in this lab. 
 
-Run an NGINX container and try to view the served content from another container (using curl or similar).
+Run an NGINX container and view your custom content from another container (using curl or similar).
 
 Lab 3.1: Build a Simple Python App
 ----------------------------------
