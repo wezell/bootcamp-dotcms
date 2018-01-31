@@ -45,30 +45,32 @@ What if you pull before you remove?
 5.2: GitLab Docker Compose
 --------------------------
 
-This lab will introduce the Docker Compose tool  
-We will spin up GitLab using Docker Compose  
+This lab will introduce the Docker Compose tool.  
+We will spin up GitLab using Docker Compose.  
 
-Navigate to docker-compose-lab/gitlab  
-execute docker-compose up -d  
+1. Navigate to docker-compose-lab/gitlab.  
+
+2. Execute:
+```
+docker-compose up -d  
+```
 
 5.3: WordPress Docker Compose
 -----------------------------
 
-This lab will help us create compose files  
-We will launch WordPress using Docker Compose  
+This lab will help us create compose files.  
+We will launch WordPress using Docker Compose.  
 
-Navigate to docker-compose-lab/wordpress  
-Create a docker-compose.yml file with the following configuration:  
+1. Navigate to docker-compose-lab/wordpress.
+
+2. Create a docker-compose.yml file that includes the following:  
 
 ```
-networks:   
-	wordpress-net  
+A network called "wordpress-net"
 
-volumes:  
-	db-data
-	wordpress-data  
+Two volumes called "db-data" and "wordpress-data" 
 
-Database container  
+A database container  with the following parameters:
 	service name: db  
 	image: mysql:5.7  
 	volumes: db-data:/var/lib/mysql  
@@ -79,7 +81,7 @@ Database container
       	        MYSQL_USER: wordpress
       	        MYSQL_PASSWORD: wordpress
 
-WordPress container
+A WordPress container with the following parameters:
 	service name: wordpress
 	depends on: db
 	image: wordpress:latest
