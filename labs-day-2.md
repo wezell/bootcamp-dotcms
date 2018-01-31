@@ -112,4 +112,14 @@ docker swarm join --token SWMTKN-1-56jy8q50pccqdl0bgxzrca2p14drhcqz6r1ll1zld4klq
 NOTE: your swarm token and ip address will differ from the above!
 Ensure the output shows the workers properly joining the swarm.
 
-3. Navigate to bootcamp-dotcms/
+3. Navigate to bootcamp-dotcms/docker-swarm-lab/wordpress and launch the Stack:
+```
+docker stack deploy -c docker-compose.yml wordpress
+```
+
+4. Explore newly accessible Docker CLI Swarm commands:
+```
+docker node
+docker service
+docker stack
+```
