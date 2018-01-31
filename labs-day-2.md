@@ -1,8 +1,8 @@
 Boxboat Boot Camp Labs
----------------------
+----------------------
 
-5.1: GitLab Docker Compose
---------------------------
+5.1: Docker Registry
+--------------------
 
 This lab will introduce you to the open source Docker Registry.
 
