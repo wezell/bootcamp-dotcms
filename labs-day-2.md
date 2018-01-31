@@ -123,3 +123,28 @@ docker node
 docker service
 docker stack
 ```
+
+5.5: Swarm Mode
+-------------------------------
+
+This lab introduces the microservice paradigm with Docker Swarm Mode.
+
+Three individual Docker-provisioned machines are required for this exercise.
+
+1. Create a Swarm of three nodes.
+
+3. Navigate to bootcamp-dotcms/docker-swarm-lab/voting-app and launch the Stack:
+```
+docker stack deploy -c docker-compose.yml voting-app
+```
+
+4. Open the "result" web app and refresh several times. View the changing container ID's as the requests are load balanced in the Swarm across the routing mesh.
+
+5. Scale the "result" web app:
+```
+docker service update --replicas=3 voting-app_result
+docker service ls
+```
+
+6. Remove a Worker Node and watch the task rebalance.
+
