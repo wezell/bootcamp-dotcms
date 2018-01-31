@@ -93,7 +93,7 @@ A WordPress container with the following parameters:
       	        WORDPRESS_DB_PASSWORD: wordpress
 ```
 
-5.3: Intro to Docker Swarm Mode
+5.4: Intro to Docker Swarm Mode
 -------------------------------
 
 This lab introduces Docker Swarm Mode.
@@ -112,4 +112,4 @@ docker swarm join --token SWMTKN-1-56jy8q50pccqdl0bgxzrca2p14drhcqz6r1ll1zld4klq
 NOTE: your swarm token and ip address will differ from the above!
 Ensure the output shows the workers properly joining the swarm.
 
-3. 
+3. Navigate to bootcamp-dotcms/
