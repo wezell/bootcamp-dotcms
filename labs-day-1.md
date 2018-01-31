@@ -201,11 +201,11 @@ Run an NGINX container and view your custom content from another container (usin
 Lab 3.1: Build a Simple Python App
 ----------------------------------
 
-In this lab, we will build a very simple python application
+In this lab, we will build a very simple python application.
 
-Go to cd bootcamp/simple-python-app
+1. Go to bootcamp-dotcms/simple-python-app
 
-Now, execute the following to build the Docker Image
+2. Execute the following to build the Docker Image:
 
 `docker build –t python-app:latest .`
 
@@ -216,8 +216,8 @@ Where did our image go?
 Where is it actually stored on the host?
 
 ```
-ls /var/lib/docker/image/overlay2/imagedb/content/sha256/`
-ls /var/lib/docker/image/overlay2/layerdb/sha256/
+ls /var/lib/docker/image/overlay2/imagedb/content/..somehash../`
+ls /var/lib/docker/image/overlay2/layerdb/...somehash.../
 ````
 
 Lab 3.2: Multi-Stage Builds
