@@ -242,7 +242,7 @@ Next, we will create 2 volumes:
 	db-data  
 	wordpress-data  
 
-Next, we will launch the database container	
+Next, we will launch the database container:	
 Create a docker container run command with the following configuration:
 ```
         name: db
@@ -256,7 +256,7 @@ Create a docker container run command with the following configuration:
       	  MYSQL_PASSWORD: wordpress
 ```	
 
-Next, we will launch the WordPress container
+Next, we will launch the WordPress container:
 Create a docker container run command with the following configuration:
 ```
         name: wordpress
