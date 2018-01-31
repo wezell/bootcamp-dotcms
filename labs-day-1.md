@@ -174,7 +174,7 @@ Lab 2.4: Exposing and Publishing Ports
 In this lab, we will learn about exposing and publishing ports.
 After you run each container, look at how the ports are exposed.
 
-1. Exposing Ports: 
+1. Exposing Ports 
 Run NGINX without any port mapping:  
 `docker container run -d --name nginx-exposed nginx`  
 
